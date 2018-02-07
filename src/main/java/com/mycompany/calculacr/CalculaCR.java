@@ -11,11 +11,9 @@ package com.mycompany.calculacr;
  * @author edil
  */
 public class CalculaCR {
-       CSVService cSVService = new CSVService();
-    
-    public int cr(){
-        int cr = cSVService.run();
-        return cr;
-    }
-    
+        Disciplina disciplina = new Disciplina();
+       public int cr(){
+           int coeficiente = (disciplina.getNota() + disciplina.getNumeroHoras())/2;
+           return coeficiente;
+       }
 }
