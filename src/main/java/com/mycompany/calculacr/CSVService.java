@@ -70,9 +70,9 @@ public class CSVService {
 
     protected List<Disciplina> lerRegistros() throws IOException {
         this.registros = new ArrayList<>();
-        for (CSVRecord registro : parserArquivo.getRecords()) {
-            Disciplina disciplina = new Disciplina();
-            if (registro.get("DESCRICAO") != "Atividade Complementar") {
+        for (CSVRecord registro : parserArquivo.getRecords()) {            
+            if (!registro.get("IDCARACTERISTICADISCIPLINA").equals("103")) {
+                Disciplina disciplina = new Disciplina();
                 disciplina.setNota(Integer.parseInt(registro.get("NOTA")));
                 disciplina.setNumeroHoras(Integer.parseInt(registro.get("NUMHORASDISC")));
                 registros.add(disciplina);

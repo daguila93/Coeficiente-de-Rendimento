@@ -14,10 +14,7 @@ import java.io.IOException;
 public class Main {
     
     public static void main(String[] args) throws IOException {
-//        CalculaCR coeficienteDeRendimento = new CalculaCR();
-        CSVService cSVService = new CSVService();
-        System.out.println("Registros: " + cSVService.lerRegistros());
-        
-//        System.out.println("Coeficiente de Rendimentos: " + coeficienteDeRendimento.cr());
+        CalculaCR cR = new CalculaCR();
+        System.out.println("Registros: " + cR.coeficienteDeRendimento());
     }
 }

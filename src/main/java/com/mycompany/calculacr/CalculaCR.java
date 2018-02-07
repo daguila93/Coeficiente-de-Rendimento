@@ -6,14 +6,26 @@
 
 package com.mycompany.calculacr;
 
+import java.io.IOException;
+
 /**
  *
  * @author edil
  */
 public class CalculaCR {
-        Disciplina disciplina = new Disciplina();
-       public int cr(){
-           int coeficiente = (disciplina.getNota() + disciplina.getNumeroHoras())/2;
-           return coeficiente;
-       }
+
+    CSVService cSVService;
+
+    public CalculaCR() throws IOException {
+        this.cSVService = new CSVService();
+    }
+
+    public int coeficienteDeRendimento() throws IOException {
+        for (int i = 0; i < cSVService.getRegistros().size(); i++) {
+            cSVService.getRegistros();
+            return 0;
+        }
+        return 0;
+    }
+
 }
