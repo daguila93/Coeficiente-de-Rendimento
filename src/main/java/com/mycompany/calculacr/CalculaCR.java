@@ -21,11 +21,13 @@ public class CalculaCR {
     }
 
     public int coeficienteDeRendimento() throws IOException {
-        for (int i = 0; i < cSVService.getRegistros().size(); i++) {
-            cSVService.getRegistros();
-            return 0;
+        CSVService cSVService = new CSVService();
+        int coRen = 0, somaCargaHoraria = 0; 
+        for (Disciplina d : cSVService.getRegistros()) {
+            somaCargaHoraria += d.getNumeroHoras();
+            coRen += (d.getNota() * d.getNumeroHoras());
         }
-        return 0;
+        return coRen / somaCargaHoraria;
     }
 
 }

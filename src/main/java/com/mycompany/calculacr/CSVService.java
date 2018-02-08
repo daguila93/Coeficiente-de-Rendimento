@@ -37,7 +37,7 @@ public class CSVService {
     private List<Disciplina> registros;
 
     public CSVService() throws IOException {
-        this("./arquivo.csv");
+        this(Main.caminho);
     }
 
     public CSVService(String nomeDoArquivo) throws IOException {
@@ -117,4 +117,5 @@ public class CSVService {
     public Logger getLOGGER() {
         return LOGGER;
     }
+    
 }
