@@ -22,12 +22,18 @@ public class CalculaCR {
 
     public int coeficienteDeRendimento() throws IOException {
         CSVService cSVService = new CSVService();
-        int coRen = 0, somaCargaHoraria = 0; 
+        int coRen = 0, somaCargaHoraria = 0;
+        
         for (Disciplina d : cSVService.getRegistros()) {
             somaCargaHoraria += d.getNumeroHoras();
             coRen += (d.getNota() * d.getNumeroHoras());
         }
-        return coRen / somaCargaHoraria;
+        int coeficienteDeRendimento = coRen / somaCargaHoraria;
+        
+        if (coeficienteDeRendimento < 60 && coeficienteDeRendimento > 49) {
+            
+        }
+        return coeficienteDeRendimento;
     }
 
 }
