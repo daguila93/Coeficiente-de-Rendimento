@@ -13,6 +13,15 @@ public class Disciplina {
     
     int nota;
     int numeroHoras;
+    int notaVS;
+
+    public int getNotaVS() {
+        return notaVS;
+    }
+
+    public void setNotaVS(int notaVS) {
+        this.notaVS = notaVS;
+    }
 
     public int getNota() {
         return nota;

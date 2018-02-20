@@ -36,7 +36,7 @@ public class CSVService {
     private CSVParser parserArquivo;
     private List<Disciplina> registros;
 
-    public CSVService() throws IOException {
+    public CSVService() throws IOException {       
         this(Main.caminho);
     }
 
@@ -44,10 +44,11 @@ public class CSVService {
         this(nomeDoArquivo, LoggerFactory.getLogger(CSVService.class));
     }
 
-    public CSVService(String nomeDoArquivo, Logger log) throws IOException {
+    public CSVService(String nomeDoArquivo, Logger log) throws IOException  {
         this.nomeDoArquivo = nomeDoArquivo;
         this.LOGGER = log;
-        this.inicializarServico();
+        
+            this.inicializarServico();        
     }
 
     public CSVService inicializarServico() throws FileNotFoundException, IOException {
