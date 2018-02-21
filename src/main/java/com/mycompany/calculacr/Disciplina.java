@@ -11,9 +11,9 @@ package com.mycompany.calculacr;
  */
 public class Disciplina {
     
-    int nota;
-    int numeroHoras;
-    int notaVS;
+    private int nota;
+    private int numeroHoras;
+    private int notaVS;
 
     public int getNotaVS() {
         return notaVS;

@@ -76,14 +76,19 @@ public class CSVService {
                 Disciplina disciplina = new Disciplina();
                 disciplina.setNota(Integer.parseInt(registro.get("NOTA")));
                 disciplina.setNumeroHoras(Integer.parseInt(registro.get("NUMHORASDISC")));
-                disciplina.setNotaVS(Integer.parseInt(registro.get("NOTAVS")));
+                disciplina.setNotaVS(tratarValorNumericoEmString(registro.get("NOTAVS")));
                 registros.add(disciplina);
             }
             
         }
         return this.registros;
     }
-
+    
+    private int tratarValorNumericoEmString(String valor){
+        return valor.isEmpty()
+                ? 0
+                : Integer.parseInt(valor);
+    }
 //    public void realizarAlteracoesEmAluno(Aluno aluno, String emailEscolhido){
 //        System.out.println("entrou aqui");
 //        try {

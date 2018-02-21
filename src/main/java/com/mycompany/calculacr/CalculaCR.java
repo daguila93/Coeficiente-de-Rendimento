@@ -1,3 +1,6 @@
+//NF = Nota se > 60
+//NF = (Nota+VS)/2 Se Nota entre 40 e 60
+//NF = 60 se VS >= 60
 //CR = (Ch 1 x N  1) + ( Ch 2 x N 2) + .......(Ch n x N n),
 //Ch 1 + Ch 2 + .... + Ch n
 //Sendo:
@@ -14,35 +17,42 @@ import java.io.IOException;
 public class CalculaCR {
 
     CSVService cSVService;
-    public int coeficienteDeRendimento;
+    Disciplina disciplina;
 
     public CalculaCR() throws IOException {
         this.cSVService = new CSVService();
+        this.disciplina = new Disciplina();
+
     }
 
     public int coeficienteDeRendimento() throws IOException {
-        CSVService cSVService = new CSVService();
 
-        int coRen = 0, somaCargaHoraria = 0;
+        int coeficienteDeRendimento = 0;
 
         for (Disciplina d : cSVService.getRegistros()) {
+            int somaCargaHoraria = 0;
             somaCargaHoraria += d.getNumeroHoras();
-            coRen += (d.getNota() * d.getNumeroHoras());
 
-            this.coeficienteDeRendimento = coRen / somaCargaHoraria;
+            coeficienteDeRendimento = d.getNumeroHoras() * notaFinal() / somaCargaHoraria;
 
-            if (coeficienteDeRendimento < 60 && coeficienteDeRendimento >= 40) {
-                if (d.notaVS > 59) {
-                    coeficienteDeRendimento = 60;
-                    
-                } else {
-                    int novaNota = (d.nota + d.notaVS) / 2;
-                    coeficienteDeRendimento = novaNota * d.numeroHoras / somaCargaHoraria;
-                    
-                }
-            } 
-        
         }
         return coeficienteDeRendimento;
+    }
+
+    private int notaFinal() {
+        int notaFinal;
+
+        if (disciplina.getNota() >= 60) {
+            notaFinal = disciplina.getNota();
+        }
+
+        if (disciplina.getNotaVS() >= 60) {
+            notaFinal = 60;
+
+        } else {
+            notaFinal = (disciplina.getNota() + disciplina.getNotaVS()) / 2;
+
+        }
+        return notaFinal;
     }
 }
