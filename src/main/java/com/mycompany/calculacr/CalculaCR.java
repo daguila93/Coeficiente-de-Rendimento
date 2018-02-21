@@ -6,9 +6,6 @@
 package com.mycompany.calculacr;
 
 import java.io.IOException;
-import java.util.List;
-import org.apache.commons.csv.CSVRecord;
-import org.apache.commons.csv.CSVParser;
 
 /**
  *
@@ -17,8 +14,7 @@ import org.apache.commons.csv.CSVParser;
 public class CalculaCR {
 
     CSVService cSVService;
-    private CSVParser parserArquivo;
-    private List<Disciplina> registros;
+    public int coeficienteDeRendimento;
 
     public CalculaCR() throws IOException {
         this.cSVService = new CSVService();
@@ -32,23 +28,21 @@ public class CalculaCR {
         for (Disciplina d : cSVService.getRegistros()) {
             somaCargaHoraria += d.getNumeroHoras();
             coRen += (d.getNota() * d.getNumeroHoras());
-        }
-        int coeficienteDeRendimento = coRen / somaCargaHoraria;
 
-        if (coeficienteDeRendimento < 60 && coeficienteDeRendimento >= 40) {
-            for (CSVRecord registro : parserArquivo.getRecords()) {
-                if (registro.get("NOTAVS") != null) {
-                    Disciplina disciplina = new Disciplina();
-                    disciplina.getNotaVS();
-                    disciplina.setNumeroHoras(Integer.parseInt(registro.get("NOTAVS")));
-                    registros.add(disciplina);
+            this.coeficienteDeRendimento = coRen / somaCargaHoraria;
+
+            if (coeficienteDeRendimento < 60 && coeficienteDeRendimento >= 40) {
+                if (d.notaVS > 59) {
+                    coeficienteDeRendimento = 60;
+                    
                 } else {
-                    Disciplina disciplina = new Disciplina();
-                    disciplina.setNotaVS(0);
+                    int novaNota = (d.nota + d.notaVS) / 2;
+                    coeficienteDeRendimento = novaNota * d.numeroHoras / somaCargaHoraria;
+                    
                 }
-//                return coeficienteDeRendimento;
-            }
+            } 
+        
         }
-        return coeficienteDeRendimento;        
+        return coeficienteDeRendimento;
     }
 }

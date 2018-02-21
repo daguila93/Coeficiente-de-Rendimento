@@ -76,6 +76,7 @@ public class CSVService {
                 Disciplina disciplina = new Disciplina();
                 disciplina.setNota(Integer.parseInt(registro.get("NOTA")));
                 disciplina.setNumeroHoras(Integer.parseInt(registro.get("NUMHORASDISC")));
+                disciplina.setNotaVS(Integer.parseInt(registro.get("NOTAVS")));
                 registros.add(disciplina);
             }
             
