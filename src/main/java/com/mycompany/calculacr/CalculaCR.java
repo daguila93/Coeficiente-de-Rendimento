@@ -17,42 +17,36 @@ import java.io.IOException;
 public class CalculaCR {
 
     CSVService cSVService;
-    Disciplina disciplina;
-
+    private int somaCargaHoraria;
+    int coeficienteDeRendimento;
     public CalculaCR() throws IOException {
         this.cSVService = new CSVService();
-        this.disciplina = new Disciplina();
+
 
     }
-
-    public int coeficienteDeRendimento() throws IOException {
-
-        int coeficienteDeRendimento = 0;
-
+      
+    public int coeficienteDeRendimento() throws IOException {        
+        
         for (Disciplina d : cSVService.getRegistros()) {
-            int somaCargaHoraria = 0;
-            somaCargaHoraria += d.getNumeroHoras();
-
-            coeficienteDeRendimento = d.getNumeroHoras() * notaFinal() / somaCargaHoraria;
+            
+            coeficienteDeRendimento = d.getNumeroHoras() * calculaNotaFinal(d) / somaCargaHoraria(d);
 
         }
         return coeficienteDeRendimento;
     }
+    
+    private int somaCargaHoraria(Disciplina d){
+          return somaCargaHoraria += d.getNumeroHoras();          
+    }
+    
+    private int calculaNotaFinal(Disciplina d) {
 
-    private int notaFinal() {
-        int notaFinal;
-
-        if (disciplina.getNota() >= 60) {
-            notaFinal = disciplina.getNota();
+        if (d.getNota() >= 60) {
+            return d.getNota();
         }
 
-        if (disciplina.getNotaVS() >= 60) {
-            notaFinal = 60;
-
-        } else {
-            notaFinal = (disciplina.getNota() + disciplina.getNotaVS()) / 2;
-
-        }
-        return notaFinal;
+        return d.getNotaVS() >= 60 
+                ? 60 
+                : (d.getNota() + d.getNotaVS()) / 2;
     }
 }
