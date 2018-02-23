@@ -9,6 +9,7 @@
 package com.mycompany.calculacr;
 
 import java.io.IOException;
+import java.text.DecimalFormat;
 
 /**
  *
@@ -16,37 +17,32 @@ import java.io.IOException;
  */
 public class CalculaCR {
 
-    CSVService cSVService;
-    private int somaCargaHoraria;
-    int coeficienteDeRendimento;
+    CSVService cSVService;    
+    
     public CalculaCR() throws IOException {
         this.cSVService = new CSVService();
-
-
-    }
-      
-    public int coeficienteDeRendimento() throws IOException {        
-        
-        for (Disciplina d : cSVService.getRegistros()) {
-            
-            coeficienteDeRendimento = d.getNumeroHoras() * calculaNotaFinal(d) / somaCargaHoraria(d);
-
+    }    
+     
+    public String calcularCoeficienteDeRendimento() throws IOException {
+        int somatorioPonderado = 0;
+        int somaCargaHoraria = 0;
+        for (Disciplina d : cSVService.getRegistros()) {            
+            somatorioPonderado += d.getNumeroHoras() * calcularNotaFinal(d);
+            somaCargaHoraria += d.getNumeroHoras();
         }
-        return coeficienteDeRendimento;
+        return formatarDecimal(Math.round((float) somatorioPonderado / somaCargaHoraria));
     }
     
-    private int somaCargaHoraria(Disciplina d){
-          return somaCargaHoraria += d.getNumeroHoras();          
-    }
-    
-    private int calculaNotaFinal(Disciplina d) {
-
+    private int calcularNotaFinal(Disciplina d) {
         if (d.getNota() >= 60) {
             return d.getNota();
         }
-
         return d.getNotaVS() >= 60 
-                ? 60 
+                ? 60
                 : (d.getNota() + d.getNotaVS()) / 2;
+    }
+    
+    private String formatarDecimal(int valor){
+        return new DecimalFormat("0.0").format(valor/10.0);
     }
 }

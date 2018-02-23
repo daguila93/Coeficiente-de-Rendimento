@@ -89,18 +89,7 @@ public class CSVService {
                 ? 0
                 : Integer.parseInt(valor);
     }
-//    public void realizarAlteracoesEmAluno(Aluno aluno, String emailEscolhido){
-//        System.out.println("entrou aqui");
-//        try {
-//            Aluno alunoEncontrado = encontrarAlunoNoArquivoCSV(aluno);
-//            alteraRegistroAlunoNoArquivoCSV(alunoEncontrado, emailEscolhido);
-//            LOGGER.info(registros.get(registros.indexOf(alunoEncontrado)).toString());
-////            this.gravarUffMailNoArquivoCSV();
-//        } catch (IOException | IllegalStateException ex) {
-//            LOGGER.error("Erro ao realizar alterações no aluno {} - {}",
-//                    aluno.getMatricula(), ex.getMessage());
-//        }       
-//    }
+
     /**
      * Retorna os registros dos alunos que estão no csv.
      *

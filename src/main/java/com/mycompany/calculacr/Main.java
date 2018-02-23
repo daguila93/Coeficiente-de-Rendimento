@@ -27,8 +27,9 @@ public class Main {
             System.out.println("Digite uma Matrícula Numérica Válida!");
         }
         try {
-            CalculaCR cR = new CalculaCR();
-            System.out.println("Calculo de Coeficiente de Rendimentos do Aluno: " + cR.coeficienteDeRendimento());
+            CalculaCR calculadorCR = new CalculaCR();
+            System.out.println("Calculo de Coeficiente de Rendimentos do Aluno: " 
+                    + calculadorCR.calcularCoeficienteDeRendimento());
         } catch (IOException ex) {
             System.out.println(ex.getMessage());
             System.out.println("Digite uma Matrícula Váĺida!");
