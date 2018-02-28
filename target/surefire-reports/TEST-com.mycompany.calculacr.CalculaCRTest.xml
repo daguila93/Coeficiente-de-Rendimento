@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="1" failures="0" name="com.mycompany.calculacr.CalculaCRTest" time="0.672" errors="1" skipped="0">
+<testsuite tests="1" failures="0" name="com.mycompany.calculacr.CalculaCRTest" time="0.232" errors="1" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="/usr/lib/jvm/java-8-oracle/jre/lib/amd64"/>
@@ -59,18 +59,18 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.isalist" value=""/>
   </properties>
-  <testcase classname="com.mycompany.calculacr.CalculaCRTest" name="testCalcularCoeficienteDeRendimento" time="0.038">
+  <testcase classname="com.mycompany.calculacr.CalculaCRTest" name="testCalcularCoeficienteDeRendimento" time="0.045">
     <error type="java.lang.NullPointerException">java.lang.NullPointerException
 	at java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:130)
 	at java.io.FileInputStream.&lt;init&gt;(FileInputStream.java:93)
 	at java.io.FileReader.&lt;init&gt;(FileReader.java:58)
-	at com.mycompany.calculacr.CSVService.inicializarLeitorArquivo(CSVService.java:60)
-	at com.mycompany.calculacr.CSVService.inicializarServico(CSVService.java:55)
-	at com.mycompany.calculacr.CSVService.&lt;init&gt;(CSVService.java:51)
+	at com.mycompany.calculacr.CSVService.inicializarLeitorArquivo(CSVService.java:59)
+	at com.mycompany.calculacr.CSVService.inicializarServico(CSVService.java:54)
+	at com.mycompany.calculacr.CSVService.&lt;init&gt;(CSVService.java:50)
 	at com.mycompany.calculacr.CSVService.&lt;init&gt;(CSVService.java:44)
 	at com.mycompany.calculacr.CSVService.&lt;init&gt;(CSVService.java:40)
 	at com.mycompany.calculacr.CalculaCR.&lt;init&gt;(CalculaCR.java:23)
-	at com.mycompany.calculacr.CalculaCRTest.setUp(CalculaCRTest.java:33)
+	at com.mycompany.calculacr.CalculaCRTest.setUp(CalculaCRTest.java:30)
 	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
 	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
 	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)

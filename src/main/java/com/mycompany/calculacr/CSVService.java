@@ -46,9 +46,8 @@ public class CSVService {
 
     public CSVService(String nomeDoArquivo, Logger log) throws IOException  {
         this.nomeDoArquivo = nomeDoArquivo;
-        this.LOGGER = log;
-        
-            this.inicializarServico();        
+        this.LOGGER = log;        
+        this.inicializarServico();
     }
 
     public CSVService inicializarServico() throws FileNotFoundException, IOException {

@@ -41,11 +41,9 @@ public class MainTest {
     
     @Test
     public void testNomeDeArquivoValido() {
-        if(Main.caminho == "test."){
+        if(Main.caminho == "12345678."){
             
         }
-    }
-    
-    
-    
+    }  
+
 }

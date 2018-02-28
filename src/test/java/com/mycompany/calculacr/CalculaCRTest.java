@@ -6,27 +6,24 @@
 package com.mycompany.calculacr;
 
 import java.io.IOException;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static org.junit.Assert.*;
-import org.mockito.Mockito;
-
+import static org.mockito.Mockito.when;
 
 
 /**
  *
  * @author edil
  */
+
 public class CalculaCRTest {
     
     CSVService cSVServiceTest;
-    CalculaCR cr;
-    
-    public CalculaCRTest() {
-        
-        cSVServiceTest = Mockito.mock(CSVService.class);
-    }
+    CalculaCR cr;       
     
     @Before
     public void setUp() throws IOException {
@@ -39,9 +36,8 @@ public class CalculaCRTest {
 
     @Test
     public void testCalcularCoeficienteDeRendimento() throws Exception {
-        
-        assertEquals(8.0, cr.calcularCoeficienteDeRendimento());
-        //assertThat(8.0 , cr.calcularCoeficienteDeRendimento());
+        when(cSVServiceTest.getNomeDoArquivo()).thenReturn("12345678");
+        assertThat(cr.calcularCoeficienteDeRendimento(), is(equalTo(8.0)));
     }
-    
+
 }
