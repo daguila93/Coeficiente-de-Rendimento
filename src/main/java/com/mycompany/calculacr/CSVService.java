@@ -36,10 +36,6 @@ public class CSVService {
     private CSVParser parserArquivo;
     private List<Disciplina> registros;
 
-    public CSVService() throws IOException {       
-        this(Main.caminho);
-    }
-
     public CSVService(String nomeDoArquivo) throws IOException {
         this(nomeDoArquivo, LoggerFactory.getLogger(CSVService.class));
     }
@@ -99,18 +95,6 @@ public class CSVService {
         return this.registros != null
                 ? this.registros
                 : lerRegistros();
-    }
-
-    public void setRegistros(List<Disciplina> registros) {
-        this.registros = registros;
-    }
-
-    public String getNomeDoArquivo() {
-        return nomeDoArquivo;
-    }
-
-    public Logger getLOGGER() {
-        return LOGGER;
     }
     
 }

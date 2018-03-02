@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="pt"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>CSVService.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">CalculaCR</a> &gt; <a href="index.source.html" class="el_package">com.mycompany.calculacr</a> &gt; <span class="el_source">CSVService.java</span></div><h1>CSVService.java</h1><pre class="source lang-java linenums">/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package com.mycompany.calculacr;
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.Reader;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import org.apache.commons.csv.CSVFormat;
+import org.apache.commons.csv.CSVParser;
+import org.apache.commons.csv.CSVRecord;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+/**
+ *
+ * @author edil
+ */
+public class CSVService {
+
+    Map&lt;Long, Disciplina&gt; map;
+    private Logger LOGGER;
+
+<span class="fc" id="L30">    public static final String[] HEADER = {</span>
+        &quot;CODIGO&quot;, &quot;NUMHORASDISC&quot;, &quot;NOTA&quot;, &quot;NOTAVS&quot;, &quot;FREQUENCIA&quot;, &quot;CODSITDISCIPLINA&quot;, &quot;IDCARACTERISTICADISCIPLINA&quot;, &quot;DESCRICAO&quot;, &quot;ANOSEMESTRE&quot;
+    };
+
+    private String nomeDoArquivo;
+    private Reader leitorArquivo;
+    private CSVParser parserArquivo;
+    private List&lt;Disciplina&gt; registros;
+
+    public CSVService(String nomeDoArquivo) throws IOException {
+<span class="fc" id="L40">        this(nomeDoArquivo, LoggerFactory.getLogger(CSVService.class));</span>
+<span class="fc" id="L41">    }</span>
+
+<span class="fc" id="L43">    public CSVService(String nomeDoArquivo, Logger log) throws IOException  {</span>
+<span class="fc" id="L44">        this.nomeDoArquivo = nomeDoArquivo;</span>
+<span class="fc" id="L45">        this.LOGGER = log;        </span>
+<span class="fc" id="L46">        this.inicializarServico();</span>
+<span class="fc" id="L47">    }</span>
+
+    public CSVService inicializarServico() throws FileNotFoundException, IOException {
+<span class="fc" id="L50">        inicializarLeitorArquivo().carregarArquivo();</span>
+<span class="fc" id="L51">        return this;</span>
+    }
+
+    private CSVService inicializarLeitorArquivo() throws FileNotFoundException {
+<span class="fc" id="L55">        this.leitorArquivo = new FileReader(nomeDoArquivo);</span>
+<span class="fc" id="L56">        return this;</span>
+    }
+
+    private CSVService carregarArquivo() throws IOException {
+<span class="fc" id="L60">        this.parserArquivo = CSVFormat.EXCEL</span>
+<span class="fc" id="L61">                .withFirstRecordAsHeader()</span>
+<span class="fc" id="L62">                .withHeader(HEADER)</span>
+<span class="fc" id="L63">                .parse(leitorArquivo);</span>
+<span class="fc" id="L64">        return this;</span>
+    }
+
+    protected List&lt;Disciplina&gt; lerRegistros() throws IOException {
+<span class="fc" id="L68">        this.registros = new ArrayList&lt;&gt;();</span>
+<span class="fc bfc" id="L69" title="All 2 branches covered.">        for (CSVRecord registro : parserArquivo.getRecords()) {            </span>
+<span class="fc bfc" id="L70" title="All 2 branches covered.">            if (!registro.get(&quot;IDCARACTERISTICADISCIPLINA&quot;).equals(&quot;103&quot;)) {</span>
+<span class="fc" id="L71">                Disciplina disciplina = new Disciplina();</span>
+<span class="fc" id="L72">                disciplina.setNota(Integer.parseInt(registro.get(&quot;NOTA&quot;)));</span>
+<span class="fc" id="L73">                disciplina.setNumeroHoras(Integer.parseInt(registro.get(&quot;NUMHORASDISC&quot;)));</span>
+<span class="fc" id="L74">                disciplina.setNotaVS(tratarValorNumericoEmString(registro.get(&quot;NOTAVS&quot;)));</span>
+<span class="fc" id="L75">                registros.add(disciplina);</span>
+            }
+            
+<span class="fc" id="L78">        }</span>
+<span class="fc" id="L79">        return this.registros;</span>
+    }
+    
+    private int tratarValorNumericoEmString(String valor){
+<span class="fc bfc" id="L83" title="All 2 branches covered.">        return valor.isEmpty()</span>
+                ? 0
+<span class="fc" id="L85">                : Integer.parseInt(valor);</span>
+    }
+
+    /**
+     * Retorna os registros dos alunos que estão no csv.
+     *
+     * @return
+     * @throws IOException
+     */
+    public List&lt;Disciplina&gt; getRegistros() throws IOException {
+<span class="pc bpc" id="L95" title="1 of 2 branches missed.">        return this.registros != null</span>
+                ? this.registros
+<span class="fc" id="L97">                : lerRegistros();</span>
+    }
+    
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

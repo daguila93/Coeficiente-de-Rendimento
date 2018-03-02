@@ -20,13 +20,17 @@ public class CalculaCR {
     CSVService cSVService;    
     
     public CalculaCR() throws IOException {
-        this.cSVService = new CSVService();
+        this(new CSVService("12345678.csv"));
+    }
+
+    public CalculaCR(CSVService cSVService) {
+        this.cSVService = cSVService;
     }    
      
     public String calcularCoeficienteDeRendimento() throws IOException {
         int somatorioPonderado = 0;
         int somaCargaHoraria = 0;
-        for (Disciplina d : cSVService.getRegistros()) {            
+        for (Disciplina d : cSVService.getRegistros()) {
             somatorioPonderado += d.getNumeroHoras() * calcularNotaFinal(d);
             somaCargaHoraria += d.getNumeroHoras();
         }

@@ -14,7 +14,7 @@ import java.util.Scanner;
  */
 public class Main {
 
-    static String caminho;
+    static String caminho = "12345678.csv";
 
     public static void main(String[] args) throws IOException {
 
