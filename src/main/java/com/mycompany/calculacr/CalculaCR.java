@@ -20,7 +20,7 @@ public class CalculaCR {
     CSVService cSVService;    
     
     public CalculaCR() throws IOException {
-        this(new CSVService("12345678.csv"));
+        this(new CSVService(Main.caminho));
     }
 
     public CalculaCR(CSVService cSVService) {

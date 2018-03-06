@@ -5,6 +5,7 @@
  */
 package com.mycompany.calculacr;
 
+import java.io.IOException;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -20,19 +21,12 @@ public class CSVServiceTest {
     }
     
     @Before
-    public void setUp() {
+    public void setUp() throws IOException {
+        new CSVService("12345678.csv");
     }
     
     @After
     public void tearDown() {
     }
-
-    @Test
-    public void testInicializarServico() throws Exception {
-    }
-
-    @Test
-    public void testLerRegistros() throws Exception {
-    }
-
+    
 }

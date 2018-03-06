@@ -28,7 +28,8 @@ public class CSVService {
     private Logger LOGGER;
 
     public static final String[] HEADER = {
-        "CODIGO", "NUMHORASDISC", "NOTA", "NOTAVS", "FREQUENCIA", "CODSITDISCIPLINA", "IDCARACTERISTICADISCIPLINA", "DESCRICAO", "ANOSEMESTRE"
+        "CODIGO", "NUMHORASDISC", "NOTA", "NOTAVS", "FREQUENCIA", "CODSITDISCIPLINA", 
+        "IDCARACTERISTICADISCIPLINA", "DESCRICAO", "ANOSEMESTRE"
     };
 
     private String nomeDoArquivo;

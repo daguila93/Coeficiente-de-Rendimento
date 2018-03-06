@@ -14,25 +14,29 @@ import java.util.Scanner;
  */
 public class Main {
 
-    static String caminho = "12345678.csv";
+    static String caminho; 
 
     public static void main(String[] args) throws IOException {
 
         Scanner sc = new Scanner(System.in);
         System.out.println("Digite a matrícula de um aluno: ");
+        
         try {
             int matricula = sc.nextInt();
             Main.caminho = "./" + matricula + ".csv";
+            
+            try {
+                CalculaCR calculadorCR = new CalculaCR();
+                System.out.println("Calculo de Coeficiente de Rendimentos do Aluno: "
+                        + calculadorCR.calcularCoeficienteDeRendimento());
+            } catch (IOException ex) {
+                System.out.println(ex.getMessage());
+                System.out.println("Digite uma Matrícula Váĺida!");
+            }
+            
         } catch (RuntimeException e) {
             System.out.println("Digite uma Matrícula Numérica Válida!");
         }
-        try {
-            CalculaCR calculadorCR = new CalculaCR();
-            System.out.println("Calculo de Coeficiente de Rendimentos do Aluno: " 
-                    + calculadorCR.calcularCoeficienteDeRendimento());
-        } catch (IOException ex) {
-            System.out.println(ex.getMessage());
-            System.out.println("Digite uma Matrícula Váĺida!");
-        }
+
     }
 }

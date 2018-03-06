@@ -21,8 +21,8 @@ import static org.junit.Assert.*;
 
 public class CalculaCRTest {
     
-    CSVService CSVService;
-    CalculaCR cr;       
+    private CSVService CSVService;
+    private CalculaCR cr;       
     
     @Before
     public void setUp() throws IOException {        
@@ -38,13 +38,12 @@ public class CalculaCRTest {
 
     @Test
     public void testCalcularCoeficienteDeRendimento() throws Exception {        
-        assertThat(cr.calcularCoeficienteDeRendimento(), is(equalTo("8,0")));
+        assertThat(cr.calcularCoeficienteDeRendimento(), is(equalTo("7,9")));
     }
 
     @Test
     public void testConstrutorVazio() throws IOException{
-        CalculaCR calcula = new CalculaCR();
-        assertThat(calcula.cSVService, is(Matchers.notNullValue()));
+        assertThat(cr.cSVService, is(Matchers.notNullValue()));
     }
 
 }
