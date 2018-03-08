@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
  */
 public class CalculaCR {
 
-    CSVService cSVService;    
+    private CSVService cSVService;    
     
     public CalculaCR() throws IOException {
 <span class="nc" id="L23">        this(new CSVService(Main.caminho));</span>
@@ -38,7 +38,7 @@ public class CalculaCR {
     }
     
     private int calcularNotaFinal(Disciplina d) {
-<span class="fc bfc" id="L41" title="All 2 branches covered.">        if (d.getNota() &gt;= 60) {</span>
+<span class="fc bfc" id="L41" title="All 4 branches covered.">        if (d.getNota() &gt;= 60 || isDisciplinaAvaliacaoContinuada(d)) {</span>
 <span class="fc" id="L42">            return d.getNota();</span>
         }
 <span class="fc bfc" id="L44" title="All 2 branches covered.">        return d.getNotaVS() &gt;= 60 </span>
@@ -46,8 +46,19 @@ public class CalculaCR {
 <span class="fc" id="L46">                : (d.getNota() + d.getNotaVS()) / 2;</span>
     }
     
+    private boolean isDisciplinaAvaliacaoContinuada(Disciplina d){
+<span class="fc bfc" id="L50" title="All 4 branches covered.">        if (d.getCaracteristica().equals(105) &amp;&amp; d.getNotaVS() == null) {</span>
+            
+        }
+<span class="fc bfc" id="L53" title="All 4 branches covered.">        return d.getCaracteristica().equals(105) &amp;&amp; d.getNotaVS() == null;</span>
+    }
+    
     private String formatarDecimal(int valor){
-<span class="fc" id="L50">        return new DecimalFormat(&quot;0.0&quot;).format(valor/10.0);</span>
+<span class="fc" id="L57">        return new DecimalFormat(&quot;0.0&quot;).format(valor/10.0);</span>
+    }
+
+    public CSVService getcSVService() {
+<span class="fc" id="L61">        return cSVService;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

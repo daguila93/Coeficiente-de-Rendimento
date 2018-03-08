@@ -73,17 +73,18 @@ public class CSVService {
 <span class="fc" id="L73">                disciplina.setNota(Integer.parseInt(registro.get(&quot;NOTA&quot;)));</span>
 <span class="fc" id="L74">                disciplina.setNumeroHoras(Integer.parseInt(registro.get(&quot;NUMHORASDISC&quot;)));</span>
 <span class="fc" id="L75">                disciplina.setNotaVS(tratarValorNumericoEmString(registro.get(&quot;NOTAVS&quot;)));</span>
-<span class="fc" id="L76">                registros.add(disciplina);</span>
+<span class="fc" id="L76">                disciplina.setCaracteristica(Integer.parseInt(registro.get(&quot;IDCARACTERISTICADISCIPLINA&quot;)));</span>
+<span class="fc" id="L77">                registros.add(disciplina);</span>
             }
             
-<span class="fc" id="L79">        }</span>
-<span class="fc" id="L80">        return this.registros;</span>
+<span class="fc" id="L80">        }</span>
+<span class="fc" id="L81">        return this.registros;</span>
     }
     
-    private int tratarValorNumericoEmString(String valor){
-<span class="fc bfc" id="L84" title="All 2 branches covered.">        return valor.isEmpty()</span>
-                ? 0
-<span class="fc" id="L86">                : Integer.parseInt(valor);</span>
+    private Integer tratarValorNumericoEmString(String valor){
+<span class="fc bfc" id="L85" title="All 2 branches covered.">        return valor.isEmpty()</span>
+                ? null
+<span class="fc" id="L87">                : Integer.parseInt(valor);</span>
     }
 
     /**
@@ -93,9 +94,9 @@ public class CSVService {
      * @throws IOException
      */
     public List&lt;Disciplina&gt; getRegistros() throws IOException {
-<span class="pc bpc" id="L96" title="1 of 2 branches missed.">        return this.registros != null</span>
+<span class="pc bpc" id="L97" title="1 of 2 branches missed.">        return this.registros != null</span>
                 ? this.registros
-<span class="fc" id="L98">                : lerRegistros();</span>
+<span class="fc" id="L99">                : lerRegistros();</span>
     }
     
 }

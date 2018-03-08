@@ -17,7 +17,7 @@ import java.text.DecimalFormat;
  */
 public class CalculaCR {
 
-    CSVService cSVService;    
+    private CSVService cSVService;    
     
     public CalculaCR() throws IOException {
         this(new CSVService(Main.caminho));
@@ -38,7 +38,7 @@ public class CalculaCR {
     }
     
     private int calcularNotaFinal(Disciplina d) {
-        if (d.getNota() >= 60) {
+        if (d.getNota() >= 60 || isDisciplinaAvaliacaoContinuada(d)) {
             return d.getNota();
         }
         return d.getNotaVS() >= 60 
@@ -46,7 +46,18 @@ public class CalculaCR {
                 : (d.getNota() + d.getNotaVS()) / 2;
     }
     
+    private boolean isDisciplinaAvaliacaoContinuada(Disciplina d){
+        if (d.getCaracteristica().equals(105) && d.getNotaVS() == null) {
+            
+        }
+        return d.getCaracteristica().equals(105) && d.getNotaVS() == null;
+    }
+    
     private String formatarDecimal(int valor){
         return new DecimalFormat("0.0").format(valor/10.0);
+    }
+
+    public CSVService getcSVService() {
+        return cSVService;
     }
 }

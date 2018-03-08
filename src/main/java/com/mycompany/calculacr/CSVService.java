@@ -73,6 +73,7 @@ public class CSVService {
                 disciplina.setNota(Integer.parseInt(registro.get("NOTA")));
                 disciplina.setNumeroHoras(Integer.parseInt(registro.get("NUMHORASDISC")));
                 disciplina.setNotaVS(tratarValorNumericoEmString(registro.get("NOTAVS")));
+                disciplina.setCaracteristica(Integer.parseInt(registro.get("IDCARACTERISTICADISCIPLINA")));
                 registros.add(disciplina);
             }
             
@@ -80,9 +81,9 @@ public class CSVService {
         return this.registros;
     }
     
-    private int tratarValorNumericoEmString(String valor){
+    private Integer tratarValorNumericoEmString(String valor){
         return valor.isEmpty()
-                ? 0
+                ? null
                 : Integer.parseInt(valor);
     }
 

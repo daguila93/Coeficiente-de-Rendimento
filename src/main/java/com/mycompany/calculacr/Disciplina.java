@@ -11,31 +11,43 @@ package com.mycompany.calculacr;
  */
 public class Disciplina {
     
-    private int nota;
-    private int numeroHoras;
-    private int notaVS;
+    private Integer nota;
+    private Integer numeroHoras;
+    private Integer notaVS;
+    private Integer caracteristica;
 
-    public int getNotaVS() {
-        return notaVS;
-    }
-
-    public void setNotaVS(int notaVS) {
-        this.notaVS = notaVS;
-    }
-
-    public int getNota() {
+    public Integer getNota() {
         return nota;
     }
 
-    public int getNumeroHoras() {
-        return numeroHoras;
-    }
-
-    public void setNota(int nota) {
+    public void setNota(Integer nota) {
         this.nota = nota;
     }
 
-    public void setNumeroHoras(int numeroHoras) {
+    public Integer getNumeroHoras() {
+        return numeroHoras;
+    }
+
+    public void setNumeroHoras(Integer numeroHoras) {
         this.numeroHoras = numeroHoras;
     }
+
+    public Integer getNotaVS() {
+        return notaVS;
+    }
+
+    public void setNotaVS(Integer notaVS) {
+        this.notaVS = notaVS;
+    }
+
+    public Integer getCaracteristica() {
+        return caracteristica;
+    }
+
+    public void setCaracteristica(Integer caracteristica) {
+        this.caracteristica = caracteristica;
+    }
+
+    
+    
 }

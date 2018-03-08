@@ -22,7 +22,6 @@ public class CSVServiceTest {
     
     @Before
     public void setUp() throws IOException {
-        new CSVService("12345678.csv");
     }
     
     @After

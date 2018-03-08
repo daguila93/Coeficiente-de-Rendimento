@@ -20,22 +20,24 @@ import java.util.Scanner;
 
 <span class="nc" id="L21">        Scanner sc = new Scanner(System.in);</span>
 <span class="nc" id="L22">        System.out.println(&quot;Digite a matrícula de um aluno: &quot;);</span>
+        
         try {
-<span class="nc" id="L24">            int matricula = sc.nextInt();</span>
-<span class="nc" id="L25">            Main.caminho = &quot;./&quot; + matricula + &quot;.csv&quot;;</span>
+<span class="nc" id="L25">            int matricula = sc.nextInt();</span>
+<span class="nc" id="L26">            Main.caminho = &quot;./&quot; + matricula + &quot;.csv&quot;;</span>
             
             try {
-<span class="nc" id="L28">                CalculaCR calculadorCR = new CalculaCR();</span>
-<span class="nc" id="L29">                System.out.println(&quot;Calculo de Coeficiente de Rendimentos do Aluno: &quot;</span>
-<span class="nc" id="L30">                        + calculadorCR.calcularCoeficienteDeRendimento());</span>
-<span class="nc" id="L31">            } catch (IOException ex) {</span>
-<span class="nc" id="L32">                System.out.println(ex.getMessage());</span>
-<span class="nc" id="L33">                System.out.println(&quot;Digite uma Matrícula Váĺida!&quot;);</span>
-<span class="nc" id="L34">            }</span>
-<span class="nc" id="L35">        } catch (RuntimeException e) {</span>
-<span class="nc" id="L36">            System.out.println(&quot;Digite uma Matrícula Numérica Válida!&quot;);</span>
-<span class="nc" id="L37">        }</span>
+<span class="nc" id="L29">                CalculaCR calculadorCR = new CalculaCR();</span>
+<span class="nc" id="L30">                System.out.println(&quot;Calculo de Coeficiente de Rendimentos do Aluno: &quot;</span>
+<span class="nc" id="L31">                        + calculadorCR.calcularCoeficienteDeRendimento());</span>
+<span class="nc" id="L32">            } catch (IOException ex) {</span>
+<span class="nc" id="L33">                System.out.println(ex.getMessage());</span>
+<span class="nc" id="L34">                System.out.println(&quot;Digite uma Matrícula Váĺida!&quot;);</span>
+<span class="nc" id="L35">            }</span>
+            
+<span class="nc" id="L37">        } catch (RuntimeException e) {</span>
+<span class="nc" id="L38">            System.out.println(&quot;Digite uma Matrícula Numérica Válida!&quot;);</span>
+<span class="nc" id="L39">        }</span>
 
-<span class="nc" id="L39">    }</span>
+<span class="nc" id="L41">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.7.9.201702052155</span></div></body></html>

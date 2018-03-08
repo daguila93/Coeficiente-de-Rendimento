@@ -31,7 +31,7 @@ public class DisciplinaTest {
         disciplina.setNota(Integer.valueOf(record.get("NOTA")));
         disciplina.setNumeroHoras(Integer.valueOf(record.get("NUMHORASDISC")));
         disciplina.setNotaVS(Integer.valueOf(record.get("NOTAVS")));
-    
+        disciplina.setCaracteristica(Integer.parseInt(record.get("IDCARACTERISTICADISCIPLINA")));
     }
     
     @After
